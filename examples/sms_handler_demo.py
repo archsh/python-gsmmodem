@@ -35,7 +35,10 @@ def main():
     modem.connect(PIN)
     print('[%s] Initialized modem!' % datetime.datetime.now())
     print('[%s] Sending Message...' % datetime.datetime.now())
-    modem.sendSms('18926025825', u'尊敬的用户，您好！欢饮使用KKBEAR！%s ' % datetime.datetime.now())
+    cellnum = raw_input("Please Enter your phone number:")
+    text = raw_input("Please Enter your text message:")
+    print('Type:', type(text))
+    modem.sendSms(cellnum, unicode(text, 'gbk'))
     print('[%s] Waiting for SMS message...' % datetime.datetime.now())
     try:
         modem.rxThread.join(2 ** 31)
